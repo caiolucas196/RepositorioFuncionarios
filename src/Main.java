@@ -25,7 +25,7 @@ public class Program {
         String workerLevel = sc.nextLine();
         System.out.println("Base Salary: ");
         double baseSalary = sc.nextDouble();
-        Worker worker = new Worker(workerName, WorkerLevel.valueOf(workerLevel),
+        Worker worker = new Worker(workerName, workerLevel.valueOf(workerLevel),
                 baseSalary, new Departament(departamentName));
 
         System.out.println("How many contracts to this worker?");
@@ -44,8 +44,14 @@ public class Program {
 
         }
 
-
-
+        System.out.println();
+        System.out.println("Enter month and year to calculete income (MM/YYYY)");
+        String monthAndYear = sc.next();
+        int month = Integer.parseInt(monthAndYear.substring(0, 2));
+        int year = Integer.parseInt(monthAndYear.substring(3));
+        System.out.println("Name: " + worker.getName() );
+        System.out.println("Departament: " + worker.getDepartament());
+        System.out.println("Income for: " + monthAndYear + " : " + String.format("%.2f", worker.income(year, month)));
 
 
         sc.close();
